@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from "./footer/footer.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { ngxLoadingAnimationTypes, NgxLoadingModule } from "@dchtools/ngx-loading-v18";
 import { Router, NavigationEnd } from '@angular/router';
-declare var AOS: any;
+import * as AOS from 'aos';
 import 'aos/dist/aos.css';
 
 @Component({
@@ -16,14 +17,10 @@ import 'aos/dist/aos.css';
 })
 export class AppComponent {
   title = 'swiftcart';
-  constructor(private router: Router) {}
+  constructor(private router: Router,@Inject(PLATFORM_ID) private platformId: Object) {}
   ngOnInit(): void {
-    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-      import('aos').then(AOS => {
-        setTimeout(() => {
-          AOS.init();
-        }, 100);
-      });
+    if (isPlatformBrowser(this.platformId)) {
+      AOS.init();
     }
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
