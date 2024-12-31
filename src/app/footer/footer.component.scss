@@ -1,0 +1,73 @@
+@import url('https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css');
+@import "../styles/main.scss";
+footer {
+  background-color: $footerColor;
+  min-height: 400px;
+  a {
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+
+    &:hover {
+      // color: $mainColor !important;
+    }
+  }
+
+  span {
+    font-size: 13px;
+    font-weight: 400;
+    i {
+      font-size: 12px;
+      margin-right: 15px;
+      @media (max-width: 500px) {
+
+      }
+    }
+  }
+
+  .fw-icon {
+    i {
+      font-size: 16px !important;
+      margin-left: 0;
+    }
+  }
+
+  ul {
+    margin-top: 26px;
+
+    li {
+      margin-bottom: 12px;
+      font-weight: lighter;
+      font-size: 14px;
+      a {
+        font-size: 14px;
+        // color: $darkColor;
+      }
+
+      mat-icon {
+        font-size: 20px !important;
+        margin-right: 10px;
+      }
+    }
+
+  }
+
+  .contact mat-icon {
+    // color: $mainColor;
+  }
+
+  .rights {
+    // color: $mainColor;
+  }
+
+  .social-links a {
+    font-size: 20px;
+    margin-left: 15px;
+
+  }
+}
+input:focus{
+      box-shadow: 0 0 0 0.25rem #e7464671;
+}

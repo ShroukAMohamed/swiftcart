@@ -1,0 +1,28 @@
+@import "../../styles/main.scss";
+:host {
+  .new-products {
+    section {
+      background-color:$fourthColor;
+    }
+    button {
+      background-color: $secondColor;
+    }
+    .show-products {
+      transition: all 0.5s;
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -ms-transition: all 0.5s;
+      -o-transition: all 0.5s;
+      span {
+        transition: margin-left 0.3s ease;
+        -webkit-transition: margin-left 0.3s ease;
+        -moz-transition: margin-left 0.3s ease;
+        -ms-transition: margin-left 0.3s ease;
+        -o-transition: margin-left 0.3s ease;
+}
+      &:hover span {
+        margin-left: 12px;
+      }
+    }
+  }
+}

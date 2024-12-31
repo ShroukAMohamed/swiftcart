@@ -1,0 +1,20 @@
+<!--show popup-->
+<div class="text-center">
+  <h2 class="mb-12 font-semibold text-2xl">
+    {{ productDesc.title }}
+  </h2>
+  <img class="mb-8 w-64 h-72 m-auto" src="{{ productDesc.image }}" alt="" />
+  <p class="mb-8 max-w-lg m-auto">
+    {{ productDesc.description }}
+  </p>
+  <div class="flex justify-around">
+    <p class="mb-8">
+      Price: {{ productDesc.price | currency : "USD" : "symbol" : "1.1-1" }}
+    </p>
+    <p class="mb-8">In Stock: {{ productDesc.rating.count }}</p>
+  </div>
+  <div class="pb-5">
+    <app-add-btn [product]="productDesc"></app-add-btn>
+  </div>
+</div>
+<!--show popup-->

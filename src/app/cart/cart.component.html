@@ -1,0 +1,142 @@
+<div class="cart pb-44">
+  <div class="container mx-auto lg:px-20 px-5">
+    <div class="grid xl:grid-cols-4 lg:grid-cols-7 grid-cols-1 gap-x-10 mt-16">
+      <div class="xl:col-span-3 lg:col-span-5">
+        <div class="pb-6">
+          <span class="sm:text-4xl text-3xl font-bold cart-text">Cart</span>
+        </div>
+        <div
+          *ngIf="products?.length == 0"
+          class="flex flex-col bg-gray-50 items-center justify-center h-full py-14 rounded-xl border border-gray-300"
+        >
+          <span class="text-5xl me-2 text-gray-500"
+            ><i class="fa-solid fa-cart-plus"></i
+          ></span>
+          <h3 class="sm:text-xl mt-6 text-gray-600">Your cart is empty</h3>
+        </div>
+        <p-table
+          *ngIf="products!.length > 0"
+          [editableRow]="true"
+          [value]="products"
+          [tableStyle]="{ 'min-width': '60rem' }"
+          [scrollHeight]="'550px'"
+        >
+          <ng-template pTemplate="caption">
+            <div class="flex items-center">
+              <span class="text-2xl me-3 text-green-500"
+                ><i class="fa-regular fa-face-laugh"></i
+              ></span>
+              <p class="text-lg font-medium">
+                You have {{ products ? products.length : 0 }} items in your cart
+              </p>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr class="border-b border-t border-gray-300">
+              <th>Name</th>
+              <th>product</th>
+              <th>Price</th>
+              <th class="ps-14">Quantity</th>
+              <th>Total</th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-product>
+            <tr class="border-b border-gray-300 gap-y-5">
+              <td class="max-w-52">{{ product.item?.title }}</td>
+              <td>
+                <img
+                  [src]="product.item?.image"
+                  [alt]="product.item?.category"
+                  class="w-20 h-20"
+                />
+              </td>
+              <td>
+                {{
+                  product.item?.price | currency : "USD" : "symbol" : "1.0-0"
+                }}
+              </td>
+              <td>
+                <span
+                  (click)="increaseQuantity(product.item?.id, product.item.rating.count)"
+                  class="me-4 cursor-pointer rounded-full plus-btn"
+                  ><i class="fa-solid fa-plus"></i
+                ></span>
+                <input
+                  (keyup)="changeQuantity($event, product.item?.id, product.item.rating.count)"
+                  (change)="checkQuantity($event, product.item?.id)"
+                  min="1"
+                  [max]="product.item.rating.count"
+                  class="p-inputtext me-4 text-center rounded-lg border border-gray-400 w-12 py-1"
+                  [(ngModel)]="product.quantity"
+                  pInputText
+                  type="number"
+                  autocomplete="off"
+                />
+                <span
+                  (click)="decreaseQuantity(product.item?.id)"
+                  class="cursor-pointer rounded-full minus-btn"
+                  ><i class="fa-solid fa-minus"></i
+                ></span>
+              </td>
+              <td>
+                {{
+                  product.item.price * product.quantity
+                    | currency : "USD" : "symbol" : "1.0-0"
+                }}
+              </td>
+              <td>
+                <span
+                  (click)="deleteItem(product.item?.id)"
+                  class="cursor-pointer text-xl"
+                  ><i class="fa-solid fa-xmark"></i
+                ></span>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+        <div *ngIf="products.length > 0" class="flex justify-center mt-10">
+          <button
+            (click)="deleteCart()"
+            class="text-white w-full max-w-64 font-medium mt-3 py-2 rounded-full text-sm"
+          >
+            Delete Cart
+          </button>
+        </div>
+      </div>
+      <div
+        class="xl:col-span-1 lg:col-span-2 border border-gray-300 rounded-lg max-h-64 sm:mt-12 mt-20 flex flex-col justify-between py-5 lg:py-0"
+      >
+        <div>
+          <div class="flex justify-between pt-4 pb-3 px-5 max-w-72 mx-auto">
+            <span class="text-gray-500 font-medium">Subtotal</span>
+            <span class="text-black font-medium">
+              {{ total | currency : "USD" : "symbol" : "1.0-0" }}</span
+            >
+          </div>
+          <div class="flex justify-between pb-4 px-5 max-w-72 mx-auto">
+            <span class="text-gray-500 font-medium">Discount</span>
+            <span class="text-black font-medium"
+              >{{ discount | currency : "USD" : "symbol" : "1.0-0" }} -</span
+            >
+          </div>
+          <div
+            class="border-t border-gray-300 flex justify-between max-w-72 px-5 mx-auto py-4"
+          >
+            <span class="text-black font-medium">Grand total</span>
+            <span class="text-black font-medium">{{
+              grandTotal | currency : "USD" : "symbol" : "1.0-0"
+            }}</span>
+          </div>
+        </div>
+        <div class="flex justify-center pb-5 px-5">
+          <button
+            class="text-white w-full max-w-64 font-medium mt-3 py-2 rounded-full text-sm"
+          >
+            Purchase
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

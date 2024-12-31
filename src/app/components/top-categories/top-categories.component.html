@@ -1,0 +1,73 @@
+<div data-aos="fade-up" data-aos-duration="1200" class="top-categories pb-20 mt-20">
+  <section class="container mx-auto">
+    <div class="container mx-auto lg:px-20 px-5">
+      <div class="lg:pb-24">
+        <h2 class="text-center sm:text-5xl text-3xl font-semibold">
+          TOP CATEGORIES
+        </h2>
+        <p class="text-center mt-4 text-sm sm:text-base">
+          How does it feel, when you see great discount deals for each product?
+        </p>
+      </div>
+      <div class="grid lg:grid-cols-7 grid-cols-1 lg:gap-x-12">
+        <div
+          class="col-span-3 lg:col-span-4 xl:col-span-3 lg:mt-10 py-16 lg:py-0"
+        >
+          <img
+            class="rounded-md sm:max-w-lg mx-auto lg:max-w-full"
+            src="assets/surprised-girl-pink-culottes-posing-with-trolley-full-multi-colored-packages-with-new-clothes.jpg"
+            alt=""
+          />
+        </div>
+        <!-- tabs part -->
+        <mat-tab-group
+          dynamicHeight
+          (selectedTabChange)="
+            productLabel.next($event.tab.textLabel.toLocaleLowerCase())
+          "
+          class="xl:col-span-4 lg:col-span-3"
+          animationDuration="800ms"
+        >
+          <mat-tab
+            *ngFor="let category of categoriesName; index as i"
+            label="{{ categoriesName[i].toLocaleUpperCase() }}"
+          >
+            <div
+              class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 gap-x-3 gap-y-8 mt-8"
+            >
+              <div
+                class="flex flex-col justify-between"
+                *ngFor="let product of productsByCategory"
+              >
+                <div>
+                  <img class="sm:w-36 sm:h-36 w-28 h-28 m-auto" [src]="product.image" alt="" />
+                  <p
+                    class="sm:text-sm text-xs text-center mt-4 font-semibold text-gray-600"
+                  >
+                    {{ product.title }}
+                  </p>
+                </div>
+                <div class="text-center mt-2 flex flex-col sm:flex-row  justify-center gap-x-3 text-sm sm:text-base">
+                  <p class="font-semibold">
+                    Price:
+                    {{ product.price | currency : "USD" : "symbol" : "1.1-1" }}
+                  </p>
+                  <p>
+                    <span class="text-green-600"> In Stock:</span>
+                    {{ product.rating.count }}
+                  </p>
+                </div>
+                <app-add-btn
+                  [product]="product"
+                ></app-add-btn>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+        <!-- tabs part end -->
+      </div>
+    </div>
+  </section>
+</div>
+<!--Loader-->
+<ngx-loading [show]="loading" [config]="config"> </ngx-loading>

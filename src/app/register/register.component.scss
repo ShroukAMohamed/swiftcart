@@ -1,0 +1,15 @@
+@import "../styles/main.scss";
+.register {
+  padding-top: 72px;
+  min-height: calc(100vh - 72px);
+  height: 100%;
+  button {
+    background-color: $secondColor;
+  }
+  .register-img {
+    background-image: url('../../../public/assets/SideImage.png');
+    background-size: cover;
+    background-position: center center;
+    height: 93vh;
+  }
+}

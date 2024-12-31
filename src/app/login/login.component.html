@@ -1,0 +1,121 @@
+<div class="login flex items-center">
+  <div
+    class="grid xl:grid-cols-5 lg:grid-cols-6 grid-cols-1 w-full items-center relative"
+  >
+    <div class="login-img lg:col-span-3 xl:col-span-3 relative">
+      <div class="absolute w-full h-full bg-black opacity-20"></div>
+    </div>
+    <div
+      class="flex flex-col items-center justify-center xl:col-span-2 lg:col-span-3 absolute lg:relative w-full px-6 md:px-0"
+    >
+      <div class="w-full max-w-lg mx-auto bg-white sm:px-16 px-10 py-20 lg:p-0 rounded-lg bg-opacity-90">
+        <h2 class="h1 font-semibold lg:text-4xl sm:text-3xl text-xl text-center mb-8 sm:mb-0">Welcome Back !</h2>
+        <p class="text-center mb-8 mt-4 mt-sm-0 text-style text-xs sm:text-sm lg:text-base hidden sm:block">
+          Please sign in to complete purchase process
+        </p>
+        <div
+          *ngIf="this.AuthService.loginErrors"
+          class="alert alert-danger warn-alert"
+        >
+          <p class="mb-3 text-red-600 text-xs sm:text-base">{{ this.AuthService.loginErrors }}</p>
+        </div>
+        <form
+          class="xl:px-3 pt-4 px-sm-0 pt-sm-0 w-full max-w-md mx-auto"
+          [formGroup]="loginForm"
+          action="post"
+          (ngSubmit)="submitLoginForm(loginForm)"
+        >
+          <div class="pb-8">
+            <p-floatLabel
+              class="p-float-label border border-gray-400 rounded-lg"
+              variant="on"
+            >
+              <input
+                class="p-inputtext w-full px-2 py-2 rounded-lg text-xs sm:text-base"
+                formControlName="email"
+                pInputText
+                type="text"
+                id="email"
+                name="email"
+                autocomplete="off"
+              />
+              <label class="font-light" for="email">Enter email</label>
+            </p-floatLabel>
+            <div
+              *ngIf="
+                loginForm.get('email')?.errors != null &&
+                loginForm.get('email')?.touched
+              "
+              class="alert alert-danger mt-3 mb-0"
+            >
+              <p
+                class="mb-0 text-xs text-red-600"
+                *ngIf="loginForm.get('email')?.errors?.['required']"
+              >
+                email is required
+              </p>
+              <p
+                class="mb-0 text-xs text-red-600"
+                *ngIf="loginForm.get('email')?.errors?.['email']"
+              >
+                invalid email
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div
+              class="p-float-label border border-gray-400 rounded-lg"
+              variant="on"
+            >
+              <input
+                class="p-inputtext w-full px-2 py-2 rounded-lg text-xs sm:text-base"
+                formControlName="password"
+                pInputText
+                type="password"
+                id="password"
+                name="password"
+                autocomplete="off"
+              />
+              <label class="font-light" for="password">Enter password</label>
+            </div>
+            <div
+              *ngIf="
+                loginForm.get('password')?.errors != null &&
+                loginForm.get('password')?.touched
+              "
+              class="alert alert-danger mt-3"
+            >
+              <p
+                class="mb-0 text-xs text-red-600"
+                *ngIf="loginForm.get('password')?.errors?.['required']"
+              >
+                password is required
+              </p>
+              <p
+                class="mb-0 text-xs text-red-600"
+                *ngIf="loginForm.get('password')?.errors?.['pattern']"
+              >
+                Pasword must be between 6-15 with no special characters
+              </p>
+            </div>
+          </div>
+
+          <div class="flex justify-center mt-10 text-white w-full">
+            <button
+              [disabled]="loginForm.invalid"
+              type="submit"
+              class="rounded-full font-medium w-full max-w-48 py-2 disabled:opacity-50 text-xs sm:text-base"
+            >
+              <span>Sign In</span>
+            </button>
+          </div>
+        </form>
+        <p class="text-center mt-10 sign-question sm:text-sm text-xs">
+          Don't have an account ?
+          <a class="ms-2 font-semibold" [routerLink]="['/register']">Sign up</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

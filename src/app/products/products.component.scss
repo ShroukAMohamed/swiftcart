@@ -1,0 +1,84 @@
+@import "../styles/main.scss";
+:host {
+  .products {
+    .example-container {
+      min-height: 70vh;
+    }
+    padding-top: 72px;
+    .mat-drawer-container {
+      background-color: white !important;
+    }
+    .mat-drawer {
+      background-color: white !important;
+      border-right: 0.8px solid rgb(156, 156, 156);
+    }
+    ::ng-deep {
+      .mdc-label {
+        font-size: 15px;
+        font-family: "Poppins", sans-serif;
+      }
+    }
+    .bg-image {
+      background-image: url("../../../public/assets/still-life-spring-wardrobe-switch.jpg");
+      width: 100%;
+      height: 25vh;
+      background-size: cover;
+      background-position: center center;
+      position: relative;
+      .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.407);
+      }
+    }
+    button:not(.mat-btn) {
+      background-color: $secondColor;
+    }
+    .product-card {
+      .option {
+        cursor: pointer;
+        position: absolute;
+        z-index: 10;
+        top: 40px;
+        visibility: hidden;
+        opacity: 0;
+        right: 0%;
+      }
+      .option:nth-child(1) {
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+      }
+      .option:nth-child(2) {
+        transition: all 0.7s;
+        -webkit-transition: all 0.7s;
+        -moz-transition: all 0.7s;
+        -ms-transition: all 0.7s;
+        -o-transition: all 0.7s;
+      }
+      &:hover .option {
+        opacity: 1;
+        visibility: visible;
+        right: 25%;
+      }
+      img {
+        cursor: pointer;
+        transition: all 0.7s;
+        -webkit-transition: all 0.7s;
+        -moz-transition: all 0.7s;
+        -ms-transition: all 0.7s;
+        -o-transition: all 0.7s;
+      }
+      &:hover img {
+        transform: translateY(-12px);
+        -webkit-transform: translateY(-12px);
+        -moz-transform: translateY(-12px);
+        -ms-transform: translateY(-12px);
+        -o-transform: translateY(-12px);
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+<div class="wishlist pb-10">
+  <!-- show popup -->
+  <p-dialog
+    [modal]="true"
+    [(visible)]="visible"
+    [style]="{ width: '40rem' }"
+    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+  >
+  <app-product-details [productDesc]="productDesc"></app-product-details>
+  </p-dialog>
+  <!-- show popup end -->
+  <div class="bg-image flex justify-center items-center">
+    <div class="overlay"></div>
+    <div class="relative z-20 flex items-center">
+      <span class="sm:me-4 me-2">
+        <i class="fa-regular text-white md:text-5xl text-3xl fa-heart"></i
+      ></span>
+      <h2 class="text-white md:text-5xl text-3xl font-semibold">Wishlist</h2>
+    </div>
+  </div>
+  <div class="container mx-auto xl:px-20 px-5">
+    <div
+      *ngIf="wishList?.length == 0"
+      class="flex flex-col bg-gray-50 items-center justify-center h-full mt-24 py-20 rounded-xl border border-gray-300"
+    >
+      <span class="text-5xl me-2 text-gray-500"
+        ><i class="fa-solid fa-heart-circle-plus"></i
+      ></span>
+      <h3 class="sm:text-xl mt-6 text-gray-600">Your Wishlist is empty</h3>
+    </div>
+    <div
+      class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-x-5 mt-5"
+    >
+      <div
+        class="flex flex-col justify-between py-8"
+        *ngFor="let product of wishList"
+      >
+        <div class="relative product-card">
+          <p
+            (click)="showDialog(product.item.id)"
+            label="Show"
+            class="bg-white rounded-full px-2 py-1 text-xl border border-gray-400 option"
+          >
+            <i class="fa-solid fa-eye"></i>
+          </p>
+          <p
+            (click)="removeFromWishlist(product.item.id)"
+            class="bg-white rounded-full px-2 py-1 mt-14 text-xl text-center border text-red-600 border-gray-500 option"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </p>
+
+          <img class="sm:w-48 sm:h-56 w-40 h-48 m-auto" [src]="product.item.image" alt="" />
+          <p
+            class="sm:text-base text-sm text-center mt-4 font-semibold text-gray-800 max-w-80 mx-auto"
+          >
+            {{ product.item.title }}
+          </p>
+        </div>
+        <div class="text-center mt-2 flex justify-center gap-x-3 text-sm sm:text-base">
+          <p class="font-semibold">
+            Price:
+            {{ product.item.price | currency : "USD" : "symbol" : "1.1-1" }}
+          </p>
+          <p>
+            <span class="text-green-600"> In Stock:</span>
+            {{ product.item.rating.count }}
+          </p>
+        </div>
+        <app-add-btn [product]="product.item"></app-add-btn>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,163 @@
+<div class="products sm:pb-20">
+  <!--popup part-->
+  <p-dialog
+    [modal]="true"
+    [(visible)]="visible"
+    [style]="{ width: '40rem' }"
+    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+  >
+    <app-product-details [productDesc]="productDesc"></app-product-details>
+  </p-dialog>
+  <!--popup end-->
+  <div class="bg-image flex justify-center items-center">
+    <div class="overlay"></div>
+    <div class="relative z-20 flex items-center">
+      <span class="me-4">
+        <i class="fa-solid text-white sm:text-4xl text-3xl fa-cart-shopping"></i
+      ></span>
+      <h2 class="text-white sm:text-5xl text-3xl font-semibold">Products</h2>
+    </div>
+  </div>
+  <mat-drawer-container class="example-container">
+    <!--Filters part-->
+    <mat-drawer
+      [mode]="isOverMode ? 'over' : 'side'"
+      [(opened)]="isSidenavOpen"
+    >
+      <div class="w-72 h-full text-black">
+        <div class="p-6">
+          <h3 class="text-2xl font-medium">Filters</h3>
+          <div class="border-b border-gray-400 my-4"></div>
+          <div class="pb-3">
+            <h3 class="text-lg font-medium pb-3">Search</h3>
+            <p-inputGroup>
+              <p-inputGroupAddon
+                class="p-inputgroup-addon border border-gray-300 py-2"
+              >
+                <i class="pi pi-search"></i>
+              </p-inputGroupAddon>
+              <input
+                (keyup)="searchProducts($event)"
+                #searchInput
+                class="p-inputtext border border-gray-300 border-l-0 text-center"
+                pInputText
+                placeholder="Search"
+              />
+            </p-inputGroup>
+          </div>
+          <div class="border-b border-gray-400 my-4"></div>
+          <h3 class="text-lg font-medium pb-2">Category</h3>
+          <mat-radio-group
+            [(ngModel)]="categoryLabel"
+            class="flex flex-col"
+            aria-label="Select an option"
+          >
+            <mat-radio-button
+              (change)="getProductsByCategories(category)"
+              class="capitalize"
+              *ngFor="let category of categories"
+              [value]="category"
+              >{{ category }}</mat-radio-button
+            >
+          </mat-radio-group>
+          <div class="border-b border-gray-400 my-4"></div>
+          <h3 class="text-lg font-medium pb-1">Price</h3>
+          <mat-radio-group
+            (change)="sortByPrice()"
+            class="flex flex-col"
+            aria-label="Select an option"
+            [(ngModel)]="sort"
+          >
+            <mat-radio-button value="high">High to low</mat-radio-button>
+            <mat-radio-button value="low">Low to high</mat-radio-button>
+          </mat-radio-group>
+          <div class="flex justify-center mt-5">
+            <button
+              (click)="clearFilter()"
+              class="text-white mt-3 py-2 w-full max-w-48 rounded-full font-semibold text-sm"
+            >
+              Clear Filter
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-drawer>
+    <!--Filters end-->
+    <!--Products part-->
+    <mat-drawer-content class="sm:mt-5">
+      <div class="container mx-auto lg:px-20 px-5">
+        <div class="example-sidenav-content lg:hidden">
+          <button
+            class="mat-btn font-medium text-lg py-8 ms-5"
+            (click)="toggleSidenav()"
+          >
+            <span class="me-1"><i class="fa-solid fa-sliders"></i></span>
+            Filters
+          </button>
+        </div>
+        <div
+          *ngIf="products?.length == 0"
+          class="flex flex-col bg-gray-50 items-center justify-center h-full py-24 rounded-xl border border-gray-300 mt-20"
+        >
+          <span class="text-5xl me-2 text-gray-500"
+            ><i class="fa-solid fa-triangle-exclamation"></i></span>
+          <h3 class="text-xl mt-6 text-gray-600">No items found</h3>
+        </div>
+        <div
+          class="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-x-5 md:gap-y-8"
+        >
+          <div
+            class="flex flex-col justify-between sm:py-8 pb-16 sm:pb-0"
+            *ngFor="let product of products"
+          >
+            <div class="relative product-card">
+              <p
+                (click)="showDialog(product.id)"
+                label="Show"
+                class="bg-white rounded-full px-2 py-1 text-xl border border-gray-400 option"
+              >
+                <i class="fa-solid fa-eye"></i>
+              </p>
+              <p
+                [ngClass]="
+                  isInWishList(product.id) ? 'text-rose-400' : 'text-gray-500'
+                "
+                (click)="addToWishlist(product.id)"
+                class="bg-white rounded-full px-2 py-1 mt-14 text-xl text-center border border-gray-400 option"
+              >
+                <i class="fa-solid fa-heart"></i>
+              </p>
+
+              <img
+                class="sm:w-44 sm:h-52 w-40 h-48 m-auto"
+                [src]="product.image"
+                alt=""
+              />
+              <p
+                class="sm:text-base text-sm text-center mt-6 font-semibold text-gray-800 max-w-80 mx-auto"
+              >
+                {{ product.title }}
+              </p>
+            </div>
+            <div
+              class="text-center mt-2 flex justify-center gap-x-3 sm:text-base text-sm"
+            >
+              <p class="font-semibold">
+                Price:
+                {{ product.price | currency : "USD" : "symbol" : "1.1-1" }}
+              </p>
+              <p>
+                <span class="text-green-600"> In Stock:</span>
+                {{ product.rating.count }}
+              </p>
+            </div>
+            <app-add-btn [product]="product"></app-add-btn>
+          </div>
+        </div>
+      </div>
+    </mat-drawer-content>
+    <!--Products end-->
+  </mat-drawer-container>
+</div>
+<!--Loader-->
+<ngx-loading [show]="loading" [config]="config"> </ngx-loading>

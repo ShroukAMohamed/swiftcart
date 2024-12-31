@@ -1,0 +1,30 @@
+@import "../styles/main.scss";
+.cart {
+  padding-top: 72px;
+  min-height: 80vh;
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .cart-text {
+    color: $secondColor;
+  }
+  // .Table {
+  //   height: 40vh !important;
+  //   overflow: scroll;
+  // }
+  .plus-btn,
+  .minus-btn {
+    color: white;
+    padding: 7px 10px;
+    border-radius: 50%;
+    background-color: $secondColor;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  button {
+    background-color: $secondColor;
+  }
+}

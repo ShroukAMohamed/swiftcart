@@ -1,0 +1,4 @@
+@import "../../styles/main.scss";
+button:not(.mat-btn) {
+  background-color: $secondColor;
+}

@@ -1,0 +1,55 @@
+@import "../styles/main.scss";
+:host {
+  .home {
+    .collection {
+      position: relative;
+      height: 80vh;
+      background-color: $bgColor;
+      padding-top: 72px;
+      @media (max-width: 500px) {
+        height: 100vh;
+        background-color: #fbf5f1;
+      }
+    }
+    // .product-img {
+    //   width: 100%;
+    //   height: 500px;
+    // }
+    .bg-image {
+      background-image: url('../../../public/assets/black-friday-elements-assortment.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center center;
+      height: 50vh;
+      position: relative;
+
+    }
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.161);
+      @media (max-width: 1024px) {
+        background-color: rgba(0, 0, 0, 0.235);
+      }
+    }
+    .Card {
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    h2 {
+      color: $secondColor;
+    }
+    .shop-now {
+      background-color: $secondColor;
+    }
+  }
+  ::ng-deep {
+    .p-icon {
+      width: 1.875rem;
+      height: 1.875rem;
+      @media (max-width: 500px) {
+        display: none;
+      }
+    }
+  }
+}

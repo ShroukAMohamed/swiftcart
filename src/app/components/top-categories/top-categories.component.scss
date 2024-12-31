@@ -1,0 +1,26 @@
+@import "../../styles/main.scss";
+:host{
+.top-categories {
+  ::ng-deep {
+    .mat-tab-group, .mat-mdc-tab-label-container {
+      border: none !important; /* Remove border around the tab group */
+      box-shadow: none !important; /* Remove box-shadow if any */
+    }
+  }
+  .text {
+    z-index: 2000;
+    position: absolute;
+    color: white;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: calc(50% + 40px);
+  }
+  button {
+    background-color: $secondColor;
+  }
+  .Card {
+    background-color: $bgColor;
+  }
+}
+}

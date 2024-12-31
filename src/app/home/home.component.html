@@ -1,0 +1,185 @@
+<div class="home">
+  <!-- Collection first section -->
+  <section class="collection">
+    <div
+      class="mx-auto flex items-center xl:px-20 md:px-10 sm:px-5 px-2 h-full"
+    >
+      <p-carousel
+        [value]="items"
+        [numVisible]="1"
+        [numScroll]="1"
+        [circular]="true"
+        [autoplayInterval]="6000"
+        (onPage)="onSlideChange()"
+      >
+        <ng-template pTemplate="item" let-item>
+          <div
+            class="grid lg:grid-cols-2 grid-cols-1 gap-y-8 lg:gap-0 justify-between items-center h-full"
+          >
+            <div class="flex flex-col items-center order-2 lg:order-1">
+              <div class="flex flex-col items-center lg:items-start">
+                <h2 [@fadeIn]="animationStateFirst" class="xl:text-6xl md:text-5xl text-4xl font-semibold">
+                  New Collection
+                </h2>
+                <p [@fadeIn]="animationStateSecond" class="xl:text-4xl lg:text-3xl md:text-2xl text-xl mt-3">
+                  Best Selection Of {{ item.product }}
+                </p>
+                <p [@fadeIn]="animationStateSecond"
+                  class="mt-5 xl:max-w-lg lg:max-w-sm max-w-sm lg:text-lg md:text-md text-center lg:text-start text-gray-600 sm:text-black"
+                >
+                  We are experts in curtain and blinds. We have spent many years
+                  working personally with our clients to create very individual
+                  stylish interiors.
+                </p>
+                <button [@fadeIn]="animationStateSecond"
+                  [routerLink]="['/products']"
+                  routerLinkActive="router-link-active"
+                  class="text-white mt-8 py-3 font-semibold px-8 rounded-full shop-now text-sm sm:text-base"
+                >
+                  Shop Now
+                </button>
+              </div>
+            </div>
+            <div [@fadeDown]="animationState2"
+              class="xl:max-w-lg lg:max-w-sm md:max-w-xs mx-auto sm:max-w-xs max-w-72 order-1 lg:order-2"
+            >
+              <img class="product-img" [src]="item.image" alt="Image" />
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </section>
+  <!-- Collection first section end -->
+
+  <!-- Services section -->
+  <section
+    class="services grid xl:grid-cols-4 sm:grid-cols-2 grid-cols-1 container lg:px-15 xl:px-0 px-5 m-auto py-8 gap-8"
+  >
+    <div
+      class="Card flex rounded-md items-center bg-orange-50 py-8 justify-center"
+    >
+      <span class="mr-5">
+        <i class="fa-solid fa-truck-ramp-box text-2xl"></i>
+      </span>
+      <div>
+        <p class="font-semibold">Free Shipping</p>
+        <p class="text-sm mt-1">Free Shipping World Wide</p>
+      </div>
+    </div>
+    <div
+      class="Card rounded-md flex items-center bg-orange-50 py-8 justify-center"
+    >
+      <span class="mr-5">
+        <i class="fa-solid fa-clock-rotate-left text-3xl"></i>
+      </span>
+      <div>
+        <p class="font-semibold">24 Services</p>
+        <p class="text-sm mt-1">Online service for 24 x 7</p>
+      </div>
+    </div>
+    <div
+      class="Card rounded-md flex items-center bg-orange-50 py-8 justify-center"
+    >
+      <span class="mr-5">
+        <i class="fa-solid fa-tags text-3xl"></i>
+      </span>
+      <div>
+        <p class="font-semibold">Festival Offer</p>
+        <p class="text-sm mt-1">Festival Offer Discount</p>
+      </div>
+    </div>
+    <div
+      class="Card rounded-md flex items-center bg-orange-50 py-8 justify-center"
+    >
+      <span class="mr-5">
+        <i class="fa-regular fa-credit-card text-3xl"></i>
+      </span>
+      <div>
+        <p class="font-semibold">Online Payment</p>
+        <p class="text-sm mt-1">Square Payment</p>
+      </div>
+    </div>
+  </section>
+  <!-- Services section end -->
+
+  <!-- Top categories section -->
+  <app-top-categories></app-top-categories>
+  <!-- Top categories section end -->
+
+  <!-- Free delivery section -->
+  <section class="free-delivery">
+    <div class="bg-image flex items-center justify-center lg:justify-start">
+      <div class="overlay"></div>
+      <div
+        class="container mx-auto lg:px-20 px-5 text-white md:flex items-center relative z-10"
+      >
+        <span class="sm:me-6 mb-14"
+          ><img
+            class="sm:w-36 w-24 mx-auto"
+            src="assets/8679162_refund_money_icon.png"
+            alt=""
+        /></span>
+        <div class="text-center md:text-start">
+          <p class="md:text-3xl sm:text-2xl text-2xl font-medium mt-5 sm:mt-0">
+            Free Delivery
+          </p>
+          <h3
+            class="md:text-5xl sm:text-4xl text-lg font-semibold sm:py-2 py-1"
+          >
+            20% Cashback
+          </h3>
+          <p class="text-sm sm:text-base mt-5 sm:mt-0">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+          <button
+            [routerLink]="['/products']"
+            class="bg-white text-yellow-600 font-bold mt-5 py-2 px-5 rounded-full text-sm sm:text-base"
+          >
+            Shop Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Free delivery section end -->
+
+  <!-- Offers section -->
+  <app-offers></app-offers>
+  <!-- Offers section -->
+
+  <!-- SwiftCart app section -->
+  <section class="swiftCart-app md:py-20 pt-10 pb-10">
+    <div class="container mx-auto lg:px-20 px-5">
+      <div class="md:grid md:grid-cols-5 items-center md:gap-x-10">
+        <div data-aos="zoom-in" data-aos-duration="1000"
+          class="col-span-3 max-w-xl mx-auto mt-5 md:mt-0 text-center md:text-start order-1 md:order-2"
+        >
+          <h2 class="lg:text-4xl md:text-3xl text-2xl font-semibold">
+            <span class="sm:pe-2 pe-1"
+              ><i class="fa-solid fa-mobile-screen"></i
+            ></span>
+            Get The SwiftCart App
+          </h2>
+          <p class="sm:py-6 py-4 text-gray-700 text-xs sm:text-base">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores
+            amet est, ab tempora ullam molestiae modi, voluptates explicabo
+            eligendi repellat non. Et quod reprehenderit ut doloremque fuga odit
+            mollitia? Mollitia?
+          </p>
+          <div class="grid grid-cols-3 sm:gap-x-5 gap-x-3 px-8 p-2 md:px-2">
+            <img class="w-40 ms-0" src="assets/googlePlay.png" alt="" /><img
+              class="w-40 ms-0"
+              src="assets/appStore.png"
+              alt=""
+            /><img class="w-40 ms-0" src="assets/appGallery.png" alt="" />
+          </div>
+        </div>
+        <div class="col-span-2 order-2 md:order-1 mt-10 md:mt-0">
+          <img class="max-w-72 sm:max-w-96 m-auto md:max-w-full" src="assets/smartphones-marble-table.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- SwiftCart app section end -->
+</div>

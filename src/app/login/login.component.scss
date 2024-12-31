@@ -1,0 +1,15 @@
+@import "../styles/main.scss";
+.login {
+  padding-top: 72px;
+  min-height: calc(100vh - 72px);
+  height: 100%;
+  button {
+    background-color: $secondColor;
+  }
+  .login-img {
+    background-image: url('../../../public/assets/still-life-spring-wardrobe-switch.jpg');
+    background-size: cover;
+    background-position: center center;
+    height: 93vh;
+  }
+}

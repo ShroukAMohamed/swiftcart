@@ -1,0 +1,18 @@
+@import "../styles/main.scss";
+nav {
+  background-color: $secondColor;
+  .logo {
+    font-family: $logoFont;
+  }
+  .user-icon {
+    font-size: 32px;
+  }
+  .active {
+    border-bottom: 3px solid white;
+    border-radius: 0%;
+    -webkit-border-radius: 0%;
+    -moz-border-radius: 0%;
+    -ms-border-radius: 0%;
+    -o-border-radius: 0%;
+  }
+}

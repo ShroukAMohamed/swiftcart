@@ -1,0 +1,30 @@
+<!-- Add to cart button -->
+<div class="flex justify-center mt-3">
+  <button
+    (click)="addToCart(product.id)"
+    *ngIf="count != product.id || !isClicked"
+    class="text-white font-medium mt-3 py-2 px-4 rounded-full sm:text-sm text-xs"
+  >
+    Add to cart
+  </button>
+  <div *ngIf="count == product.id && isClicked">
+    <input
+      #quantityInput
+      min="1"
+      max="20"
+      class="p-inputtext me-4 text-center rounded-lg border border-gray-400 max-w-12 py-1"
+      value="1"
+      pInputText
+      type="number"
+      autocomplete="off"
+      [(ngModel)]="quantityValue"
+    />
+    <button
+      (click)="clearAddBtn(product.id, product.rating.count, quantityValue)"
+      class="text-white font-medium mt-3 py-2 px-4 rounded-full sm:text-sm text-xs"
+    >
+      Add
+    </button>
+  </div>
+</div>
+<!-- Add to cart button end -->
