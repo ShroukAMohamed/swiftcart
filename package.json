@@ -2,6 +2,7 @@
   "name": "swiftcart",
   "version": "0.0.0",
   "scripts": {
+    "deploy": "ng build --prod --base-href https://shroukamohamed.github.io/swiftcart/ && angular-cli-ghpages --branch gh-pages",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

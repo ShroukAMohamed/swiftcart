@@ -27,7 +27,7 @@
             ],
             "baseHref": "/swiftcart/",
             "deployUrl": "/swiftcart/",
-            "outputPath": "dist/swiftcart",
+            "outputPath": "docs/swiftcart",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
