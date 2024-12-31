@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter, RouterModule } from '@angular/router';
+import { provideRouter, RouterModule, withHashLocation } from '@angular/router';
 import { BrowserModule, withI18nSupport } from '@angular/platform-browser';
 import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
@@ -19,7 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     BrowserModule,
     BrowserAnimationsModule,
-    provideRouter(routes),
+    provideRouter(routes,withHashLocation()),
     provideClientHydration(withI18nSupport()),
     provideAnimations(),
     provideToastr(),
