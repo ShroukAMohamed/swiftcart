@@ -69,12 +69,12 @@ export class HomeComponent {
     this.animationState2 = 'void';
     setTimeout(() => {
       this.animationStateFirst = 'visible';
-    }, 400); // Delay to allow Angular to detect the state change
+    }, 200); // Delay to allow Angular to detect the state change
     setTimeout(() => {
       this.animationStateSecond = 'visible';
-    },800); // Delay to allow Angular to detect the state change
+    },500); // Delay to allow Angular to detect the state change
     setTimeout(() => {
       this.animationState2 = 'visible';
-    }, 1300); // Delay to allow Angular to detect the state change
+    }, 1000); // Delay to allow Angular to detect the state change
   }
 }

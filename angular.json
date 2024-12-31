@@ -23,7 +23,8 @@
               "@grpc/grpc-js",
               "@grpc/proto-loader",
               "@firebase/auth",
-              "undici"
+              "undici",
+              "aos"
             ],
             "baseHref": "/swiftcart/",
             "deployUrl": "/swiftcart/",
