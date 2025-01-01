@@ -48,7 +48,7 @@
       <div
         class="flex flex-1 items-center justify-center md:items-stretch md:justify-start"
       >
-        <div class="flex shrink-0 items-center">
+        <div [routerLink]="['/home']" class="flex shrink-0 items-center cursor-pointer">
           <img
             class="sm:h-10 h-8 w-auto"
             src="assets/logoCart.png"
@@ -215,7 +215,7 @@
         <a
           [routerLink]="['/cart']"
           (click)="toggleMenu()"
-          class="cursor-pointer ms-4 rounded-full bg-white py-1 px-2 text-gray-600"
+          class="cursor-pointer md:ms-4 rounded-full bg-white py-1 px-2 text-gray-600"
         >
           <span><i class="fa-solid fa-cart-shopping"></i></span>
         </a>

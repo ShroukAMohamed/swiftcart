@@ -1,8 +1,8 @@
 <div class="new-products sm:mt-24 mt-16">
   <div class="">
-    <h2 class="text-center sm:text-5xl text-3xl font-semibold">BEST OFFERS</h2>
+    <h2 class="text-center sm:text-5xl text-2xl font-semibold">BEST OFFERS</h2>
     <p
-      class="sm:pb-20 pb-10 text-center mt-4 max-w-80 sm:max-w-full mx-auto text-sm sm:text-base"
+      class="sm:pb-20 pb-10 text-center mt-4 max-w-80 sm:max-w-full mx-auto text-xs sm:text-base"
     >
       How does it feel, when you see great discount deals for each product?
     </p>
@@ -21,17 +21,17 @@
           <div class="px-5">
             <div class="bg-white rounded-md py-8 shadow-lg">
               <div>
-                <img class="w-40 h-40 m-auto" [src]="item.image" alt="Image" />
-                <h4 class="mt-6 w-full max-w-56 m-auto text-center">
+                <img class="sm:w-40 sm:h-40 w-32 h-32 m-auto" [src]="item.image" alt="Image" />
+                <h4 class="mt-6 w-full max-w-56 m-auto text-center text-sm sm:text-base">
                   {{ item.title | limit : 4 }}
                 </h4>
               </div>
-              <div class="text-center">
-                <p class="mt-3 text-base mb-0 line-through text-gray-400">
+              <div class="text-center text-sm sm:text-base">
+                <p class="mt-3 mb-0 line-through text-gray-400">
                   <span>Old Price: </span
                   >{{ item.price + 23 | currency : "USD" : "symbol" : "1.1-1" }}
                 </p>
-                <p class="text-base mb-0">
+                <p class="mb-0">
                   <span>Current Price: </span
                   >{{ item.price | currency : "USD" : "symbol" : "1.1-1" }}
                 </p>
@@ -47,7 +47,7 @@
           </div>
         </ng-template>
       </p-carousel>
-      <div class="text-center mt-8 sm:text-lg text-base font-semibold text-gray-800">
+      <div class="text-center mt-8 sm:text-lg text-sm font-semibold text-gray-800">
         <span [routerLink]="'/products'" class="show-products cursor-pointer">
           SEE ALL PRODUCTS
           <span class="ms-1"><i class="fa-solid fa-angles-right"></i></span>

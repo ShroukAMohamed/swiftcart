@@ -1,13 +1,13 @@
 <!--show popup-->
 <div class="text-center">
-  <h2 class="mb-12 font-semibold text-2xl">
+  <h2 class="mb-12 font-semibold sm:text-2xl">
     {{ productDesc.title }}
   </h2>
-  <img class="mb-8 w-64 h-72 m-auto" src="{{ productDesc.image }}" alt="" />
-  <p class="mb-8 max-w-lg m-auto">
+  <img class="mb-8 sm:w-64 sm:h-72 w-40 h-48 m-auto" src="{{ productDesc.image }}" alt="" />
+  <p class="mb-8 max-w-lg m-auto text-sm sm:text-base">
     {{ productDesc.description }}
   </p>
-  <div class="flex justify-around">
+  <div class="flex justify-around text-sm sm:text-base">
     <p class="mb-8">
       Price: {{ productDesc.price | currency : "USD" : "symbol" : "1.1-1" }}
     </p>

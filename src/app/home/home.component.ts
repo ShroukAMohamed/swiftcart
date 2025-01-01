@@ -63,6 +63,10 @@ export class HomeComponent {
       product:'Jackets',
     }
   ]
+  btnShop(event: any) {
+    event.stopPropagation();
+    // Add any other logic you want to execute on click
+  }
   onSlideChange(): void {
     this.animationStateFirst = 'hidden';
     this.animationStateSecond = 'hidden';

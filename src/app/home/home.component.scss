@@ -30,7 +30,7 @@
       height: 100%;
       background-color: rgba(0, 0, 0, 0.161);
       @media (max-width: 1024px) {
-        background-color: rgba(0, 0, 0, 0.235);
+        background-color: rgba(0, 0, 0, 0.167);
       }
     }
     .Card {
@@ -41,6 +41,7 @@
     }
     .shop-now {
       background-color: $secondColor;
+      pointer-events: fill !important;
     }
   }
   ::ng-deep {
@@ -48,8 +49,14 @@
       width: 1.875rem;
       height: 1.875rem;
       @media (max-width: 500px) {
-        display: none;
+        width: 1.1rem;
+        height: 1.1rem;
       }
+    }
+    .p-carousel .p-carousel-items-content {
+      pointer-events:none !important;
+      touch-action: pan-y !important; /* Allow vertical scrolling */
+      -webkit-overflow-scrolling: touch !important; /* Smooth scrolling for iOS */
     }
   }
 }

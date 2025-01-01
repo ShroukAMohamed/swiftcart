@@ -31,7 +31,7 @@
                   working personally with our clients to create very individual
                   stylish interiors.
                 </p>
-                <button [@fadeIn]="animationStateSecond"
+                <button (click)="btnShop($event)" [@fadeIn]="animationStateSecond"
                   [routerLink]="['/products']"
                   routerLinkActive="router-link-active"
                   class="text-white mt-8 py-3 font-semibold px-8 rounded-full shop-now text-sm sm:text-base"
@@ -41,7 +41,7 @@
               </div>
             </div>
             <div [@fadeDown]="animationState2"
-              class="xl:max-w-lg lg:max-w-sm md:max-w-xs mx-auto sm:max-w-xs max-w-72 order-1 lg:order-2"
+              class="xl:max-w-lg lg:max-w-sm md:max-w-xs mx-auto sm:max-w-xs max-w-60 order-1 lg:order-2"
             >
               <img class="product-img" [src]="item.image" alt="Image" />
             </div>
@@ -54,50 +54,50 @@
 
   <!-- Services section -->
   <section
-    class="services grid xl:grid-cols-4 sm:grid-cols-2 grid-cols-1 container lg:px-15 xl:px-0 px-5 m-auto py-8 gap-8"
+    class="services grid xl:grid-cols-4 sm:grid-cols-2 grid-cols-1 container lg:px-15 xl:px-0 px-5 m-auto py-8 gap-8 mt-5 md:mt-0"
   >
     <div
       class="Card flex rounded-md items-center bg-orange-50 py-8 justify-center"
     >
       <span class="mr-5">
-        <i class="fa-solid fa-truck-ramp-box text-2xl"></i>
+        <i class="fa-solid fa-truck-ramp-box sm:text-2xl text-xl"></i>
       </span>
-      <div>
+      <div class="text-sm sm:text-base">
         <p class="font-semibold">Free Shipping</p>
-        <p class="text-sm mt-1">Free Shipping World Wide</p>
+        <p class="sm:text-sm text-xs mt-1">Free Shipping World Wide</p>
       </div>
     </div>
     <div
       class="Card rounded-md flex items-center bg-orange-50 py-8 justify-center"
     >
       <span class="mr-5">
-        <i class="fa-solid fa-clock-rotate-left text-3xl"></i>
+        <i class="fa-solid fa-clock-rotate-left sm:text-3xl text-2xl"></i>
       </span>
-      <div>
+      <div class="text-sm sm:text-base">
         <p class="font-semibold">24 Services</p>
-        <p class="text-sm mt-1">Online service for 24 x 7</p>
+        <p class="sm:text-sm text-xs mt-1">Online service for 24 x 7</p>
       </div>
     </div>
     <div
       class="Card rounded-md flex items-center bg-orange-50 py-8 justify-center"
     >
       <span class="mr-5">
-        <i class="fa-solid fa-tags text-3xl"></i>
+        <i class="fa-solid fa-tags sm:text-3xl text-2xl"></i>
       </span>
-      <div>
+      <div class="text-sm sm:text-base">
         <p class="font-semibold">Festival Offer</p>
-        <p class="text-sm mt-1">Festival Offer Discount</p>
+        <p class="sm:text-sm text-xs mt-1">Festival Offer Discount</p>
       </div>
     </div>
     <div
       class="Card rounded-md flex items-center bg-orange-50 py-8 justify-center"
     >
       <span class="mr-5">
-        <i class="fa-regular fa-credit-card text-3xl"></i>
+        <i class="fa-regular fa-credit-card sm:text-3xl text-2xl"></i>
       </span>
-      <div>
+      <div class="text-sm sm:text-base">
         <p class="font-semibold">Online Payment</p>
-        <p class="text-sm mt-1">Square Payment</p>
+        <p class="sm:text-sm text-xs mt-1">Square Payment</p>
       </div>
     </div>
   </section>
@@ -129,12 +129,12 @@
           >
             20% Cashback
           </h3>
-          <p class="text-sm sm:text-base mt-5 sm:mt-0">
+          <p class="text-sm sm:text-base mt-5 sm:mt-0 hidden sm:block">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
           </p>
           <button
             [routerLink]="['/products']"
-            class="bg-white text-yellow-600 font-bold mt-5 py-2 px-5 rounded-full text-sm sm:text-base"
+            class="bg-white text-yellow-600 font-bold mt-5 py-2 px-5 rounded-full text-xs sm:text-base"
           >
             Shop Now
           </button>
@@ -155,7 +155,7 @@
         <div data-aos="zoom-in" data-aos-duration="1000"
           class="col-span-3 max-w-xl mx-auto mt-5 md:mt-0 text-center md:text-start order-1 md:order-2"
         >
-          <h2 class="lg:text-4xl md:text-3xl text-2xl font-semibold">
+          <h2 class="lg:text-4xl md:text-3xl sm:text-2xl text-xl font-semibold">
             <span class="sm:pe-2 pe-1"
               ><i class="fa-solid fa-mobile-screen"></i
             ></span>

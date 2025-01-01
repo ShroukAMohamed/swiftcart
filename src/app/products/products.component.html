@@ -26,10 +26,10 @@
     >
       <div class="w-72 h-full text-black">
         <div class="p-6">
-          <h3 class="text-2xl font-medium">Filters</h3>
+          <h3 class="sm:text-2xl text-lg font-medium">Filters</h3>
           <div class="border-b border-gray-400 my-4"></div>
           <div class="pb-3">
-            <h3 class="text-lg font-medium pb-3">Search</h3>
+            <h3 class="sm:text-lg font-medium pb-3">Search</h3>
             <p-inputGroup>
               <p-inputGroupAddon
                 class="p-inputgroup-addon border border-gray-300 py-2"
@@ -39,14 +39,14 @@
               <input
                 (keyup)="searchProducts($event)"
                 #searchInput
-                class="p-inputtext border border-gray-300 border-l-0 text-center"
+                class="p-inputtext border border-gray-300 border-l-0 text-center text-sm sm:text-base"
                 pInputText
                 placeholder="Search"
               />
             </p-inputGroup>
           </div>
           <div class="border-b border-gray-400 my-4"></div>
-          <h3 class="text-lg font-medium pb-2">Category</h3>
+          <h3 class="sm:text-lg font-medium pb-2">Category</h3>
           <mat-radio-group
             [(ngModel)]="categoryLabel"
             class="flex flex-col"
@@ -61,7 +61,7 @@
             >
           </mat-radio-group>
           <div class="border-b border-gray-400 my-4"></div>
-          <h3 class="text-lg font-medium pb-1">Price</h3>
+          <h3 class="sm:text-lg font-medium pb-1">Price</h3>
           <mat-radio-group
             (change)="sortByPrice()"
             class="flex flex-col"
@@ -74,7 +74,7 @@
           <div class="flex justify-center mt-5">
             <button
               (click)="clearFilter()"
-              class="text-white mt-3 py-2 w-full max-w-48 rounded-full font-semibold text-sm"
+              class="text-white mt-3 py-2 w-full max-w-48 rounded-full font-semibold sm:text-sm text-xs"
             >
               Clear Filter
             </button>
@@ -96,7 +96,7 @@
           </button>
         </div>
         <div
-          *ngIf="products?.length == 0"
+          *ngIf="products?.length == 0 && !loading"
           class="flex flex-col bg-gray-50 items-center justify-center h-full py-24 rounded-xl border border-gray-300 mt-20"
         >
           <span class="text-5xl me-2 text-gray-500"
@@ -129,18 +129,18 @@
               </p>
 
               <img
-                class="sm:w-44 sm:h-52 w-40 h-48 m-auto"
+                class="sm:w-44 sm:h-52 w-32 h-40 m-auto"
                 [src]="product.image"
                 alt=""
               />
               <p
-                class="sm:text-base text-sm text-center mt-6 font-semibold text-gray-800 max-w-80 mx-auto"
+                class="sm:text-base text-xs text-center mt-6 font-semibold text-gray-800 max-w-80 mx-auto"
               >
                 {{ product.title }}
               </p>
             </div>
             <div
-              class="text-center mt-2 flex justify-center gap-x-3 sm:text-base text-sm"
+              class="text-center mt-2 flex justify-center gap-x-3 sm:text-base text-xs"
             >
               <p class="font-semibold">
                 Price:
